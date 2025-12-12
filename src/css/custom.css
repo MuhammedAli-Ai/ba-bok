@@ -1,0 +1,531 @@
+/**
+ * Custom CSS for BASu/te Book
+ * Transparent blue theme with glassmorphism effects
+ */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root Variables - Transparent Blue Theme */
+:root {
+  /* Enforcing Dark Theme Globally - Overwriting Light Defaults */
+  
+  /* Vibrant but Darker Blue Primary Colors */
+  --ifm-color-primary: #2563eb; /* Blue 600 */
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #172554;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+
+  /* Backgrounds: Deep Dark with Blue Tint */
+  --ifm-background-color: #02040a; /* Almost black */
+  --ifm-navbar-background-color: rgba(2, 4, 10, 0.8);
+  
+  /* Font */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-code-font-size: 95%;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(2, 4, 10, 0.75); 
+  --glass-border: rgba(37, 99, 235, 0.15);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+  
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.15);
+}
+
+/* Dark mode colors */
+/* Dark mode colors - Deep Blue Transparent Theme */
+[data-theme='dark'] {
+  /* Vibrant and Lighter Blue Primary Colors */
+  --ifm-color-primary: #3b82f6; /* Back to brighter Blue 500 */
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+
+  /* Backgrounds: Lighter Slate Blue (instead of Black) */
+  --ifm-background-color: #0f172a; /* Slate 900 - Lighter than before */
+  --ifm-navbar-background-color: rgba(15, 23, 42, 0.8);
+  
+  /* Glassmorphism Variables */
+  /* Lighter glass tint */
+  --glass-bg: rgba(30, 41, 59, 0.45); 
+  --glass-border: rgba(59, 130, 246, 0.25);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  
+  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.15);
+}
+
+/* Navbar glassmorphism */
+.navbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  min-height: 80px;
+  padding: 0.5rem 0;
+  
+}
+
+.navbar__inner {
+  background: transparent !important;
+}
+
+.navbar__brand {
+  background: transparent !important;
+}
+
+.navbar__logo {
+  height: 200px;
+  object-fit: contain;
+  background: transparent !important;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  margin-top: -40px;
+}
+
+.navbar__title {
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(147, 197, 253, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+}
+
+/* Navbar items alignment */
+.navbar__items {
+  margin-top: -30px;
+}
+
+.navbar__item {
+  margin-top: -30px;
+}
+
+/* Color mode toggle wrapper - positioned on right side of header */
+.color-mode-toggle-wrapper {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: 30px;
+  z-index: 100;
+}
+
+/* Ensure navbar items container allows proper positioning */
+.navbar__items--right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem;
+}
+
+/* Additional targeting for color mode toggle */
+.navbar__items--right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem;
+}
+
+/* Direct targeting for all color mode toggle variations - using transform */
+/* Hiding Color Mode Toggle - Enforcing Single Theme */
+button[class*="toggle"],
+button[class*="colorMode"],
+.navbar button[aria-label*="theme"],
+.navbar button[aria-label*="mode"],
+html[data-theme] button[class*="clean"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Fallback with specific Docusaurus classes */
+div[class*="colorModeToggle"],
+.navbar__item > button,
+.navbar__items--right > div:last-child,
+.navbar__items--right > button:last-child {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure color mode toggle wrapper is visible on desktop */
+@media (min-width: 997px) {
+  .color-mode-toggle-wrapper {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ========================================
+   HAMBURGER MENU & COLOR MODE TOGGLE
+   ======================================== */
+
+/* Step 1: Hide ALL hamburger/toggle buttons on all screens - MAXIMUM SPECIFICITY */
+.mobile-nav-toggle,
+.navbar__toggle,
+.navbar__toggle.clean-btn,
+.navbar-sidebar__toggle,
+button[aria-label="Toggle navigation bar"],
+.navbar button.navbar__toggle,
+.navbar .navbar__toggle,
+html .navbar__toggle,
+body .navbar__toggle,
+[class*="navbar"] button[class*="toggle"],
+.navbar__items button[aria-label*="Toggle"],
+.navbar__items button[aria-label*="menu"],
+.navbar > .navbar__inner button[class*="toggle"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Step 2: Hide mobile sidebar on all screens */
+.navbar-sidebar,
+.navbar-sidebar__backdrop {
+  display: none !important;
+}
+
+/* Step 3: FORCE color mode toggle to be visible - highest priority */
+/* Step 3: Disabled color mode toggle visibility */
+button[title="Switch between dark and light mode (currently dark mode)"],
+button[title="Switch between dark and light mode (currently light mode)"],
+button[title*="Switch between dark and light mode"],
+button[class*="colorModeToggle"],
+div[class*="colorModeToggle"],
+div[class*="colorModeToggle"] > *,
+div[class*="colorModeToggle"] button,
+.color-mode-toggle-wrapper,
+.color-mode-toggle-wrapper button,
+.color-mode-toggle-wrapper > * {
+  display: none !important;
+}
+
+
+
+/* Step 4: Position navbar items on right side - ALL SCREENS */
+.navbar__items--right {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: auto !important;
+}
+
+/* Step 5: Desktop positioning */
+@media (min-width: 997px) {
+  .navbar__items--right {
+    position: relative;
+    right: 0;
+  }
+}
+
+/* Step 6: Mobile positioning - right side with spacing */
+@media (max-width: 996px) {
+  .navbar__items--right {
+    position: absolute !important;
+    right: 30px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* Hamburger menu icon positioning */
+.navbar__toggle,
+button[class*="navbar__toggle"],
+.navbar-sidebar__toggle,
+button[aria-label*="menu"],
+button[aria-label*="Navigation"] {
+  position: absolute !important;
+  right: 20px !important;
+  transform: translateY(-10px) !important;
+}
+
+/* Ensure hamburger is visible on mobile */
+@media (max-width: 996px) {
+  .navbar__toggle {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) translateY(-10px) !important;
+  }
+  
+  /* Transform hamburger to cross icon when menu is open */
+  .navbar-sidebar--show .navbar__toggle {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) translateY(-10px) !important;
+  }
+  
+  /* Hamburger icon animation to X */
+  .navbar__toggle svg {
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-sidebar--show .navbar__toggle svg {
+    transform: rotate(90deg);
+  }
+  
+  /* Color mode toggle in mobile sidebar - left side */
+  .navbar-sidebar .color-mode-toggle-wrapper,
+  .navbar-sidebar__brand .navbar__items {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .navbar-sidebar__brand {
+    position: relative;
+    min-height: 60px;
+  }
+  
+  /* Hide default Docusaurus mobile toggle - use custom mobile nav */
+  .navbar__toggle:not(.mobile-nav-toggle) {
+    display: none !important;
+  }
+  
+  .navbar-sidebar {
+    display: none !important;
+  }
+  
+  .navbar-sidebar__backdrop {
+    display: none !important;
+  }
+}
+
+/* Mobile sidebar dropdown - slide from top */
+.navbar-sidebar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  animation: slideDown 0.3s ease-out !important;
+  top: 0 !important;
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.2) !important;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile sidebar content styling */
+.navbar-sidebar__items {
+  padding-top: 2rem !important;
+}
+
+.navbar-sidebar__item {
+  padding: 0.75rem 1.5rem !important;
+}
+
+.navbar-sidebar__brand {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  padding: 1rem !important;
+}
+
+/* Book link in mobile menu */
+.navbar-sidebar .menu__link,
+.navbar-sidebar__item .navbar__link {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  color: var(--ifm-color-primary) !important;
+}
+
+.navbar-sidebar .menu__link:hover,
+.navbar-sidebar__item .navbar__link:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  transform: translateX(5px) !important;
+}
+
+/* Mobile sidebar backdrop */
+.navbar-sidebar__backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Sidebar glassmorphism */
+.theme-doc-sidebar-container {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border-right: 1px solid var(--glass-border);
+}
+
+/* Main content area */
+.main-wrapper {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.05) 0%, 
+    rgba(147, 197, 253, 0.05) 50%,
+    rgba(191, 219, 254, 0.05) 100%
+  );
+}
+
+/* Cards and containers */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px 0 rgba(59, 130, 246, 0.2);
+}
+
+/* Buttons */
+.button {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px 0 rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.9));
+}
+
+.button--primary {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.9));
+}
+
+.button--secondary {
+  background: var(--glass-bg);
+  color: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-color-primary);
+}
+
+/* Footer */
+.footer {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Code blocks */
+.prism-code {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+}
+
+/* Links */
+a {
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--ifm-color-primary-darker);
+  text-decoration: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.markdown > * {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Table of contents */
+.table-of-contents {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Admonitions */
+.admonition {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+}
+
+/* Hero section custom styling */
+.hero {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    rgba(147, 197, 253, 0.1) 50%,
+    rgba(191, 219, 254, 0.1) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero__title {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(147, 197, 253, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.hero__subtitle {
+  color: var(--ifm-color-primary-darker);
+  font-weight: 500;
+}
+
+/* BA Loader Spinner */
+.ba-loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid var(--ifm-color-primary);
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
