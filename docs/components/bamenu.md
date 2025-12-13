@@ -2,7 +2,7 @@
 sidebar_position: 16
 ---
 
-# 🍔 BAMenu Component
+# BAMenu Component
 
 ## Description
 

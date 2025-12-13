@@ -2,7 +2,7 @@
 sidebar_position: 11
 ---
 
-# ⚡ BAFormGrid Component
+# BAFormGrid Component
 
 ## Description
 

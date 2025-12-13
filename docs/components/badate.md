@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# 📅 BADate Component
+# BADate Component
 
 ## Description
 

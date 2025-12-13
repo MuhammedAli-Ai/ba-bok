@@ -2,7 +2,7 @@
 sidebar_position: 29
 ---
 
-# 🎨 MasterContainer Component
+# MasterContainer Component
 
 ## Description
 

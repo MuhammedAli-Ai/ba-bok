@@ -2,7 +2,7 @@
 sidebar_position: 23
 ---
 
-# 🔽 BASelect Component
+# BASelect Component
 
 ## Description
 

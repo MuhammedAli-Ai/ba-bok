@@ -2,7 +2,7 @@
 sidebar_position: 18
 ---
 
-# 📄 BAPagination Component
+# BAPagination Component
 
 ## Description
 

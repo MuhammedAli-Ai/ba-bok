@@ -2,7 +2,7 @@
 sidebar_position: 28
 ---
 
-# 📎 FileUploadToBlob Component
+# FileUploadToBlob Component
 
 ## Description
 

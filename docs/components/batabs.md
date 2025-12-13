@@ -2,7 +2,7 @@
 sidebar_position: 26
 ---
 
-# 📑 BATabs Component
+# BATabs Component
 
 ## Description
 

@@ -2,7 +2,7 @@
 sidebar_position: 22
 ---
 
-# 🔍 BASearchLookup Component
+# BASearchLookup Component
 
 ## Description
 

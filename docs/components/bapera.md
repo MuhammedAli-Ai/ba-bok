@@ -2,7 +2,7 @@
 sidebar_position: 19
 ---
 
-# 💬 BAPera Component
+# BAPera Component
 
 ## Description
 

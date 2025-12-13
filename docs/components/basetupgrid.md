@@ -2,7 +2,7 @@
 sidebar_position: 24
 ---
 
-# 📊 BASetupGrid Component
+# BASetupGrid Component
 
 ## Description
 

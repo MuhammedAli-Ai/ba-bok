@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# ⚙️ BAComponentSwitcher Component
+# BAComponentSwitcher Component
 
 ## Description
 

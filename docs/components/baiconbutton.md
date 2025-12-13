@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-# 🔘 BAIconButton Component
+# BAIconButton Component
 
 ## Description
 

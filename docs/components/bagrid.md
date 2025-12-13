@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-# 📊 BAGrid Component
+# BAGrid Component
 
 ## Description
 

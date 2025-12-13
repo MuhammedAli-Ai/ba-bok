@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# 📊 BAExcelUpload Component
+# BAExcelUpload Component
 
 ## Description
 

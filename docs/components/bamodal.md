@@ -2,7 +2,7 @@
 sidebar_position: 17
 ---
 
-# 💬 BAModal Component
+# BAModal Component
 
 ## Description
 

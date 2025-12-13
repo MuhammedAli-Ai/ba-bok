@@ -2,7 +2,7 @@
 sidebar_position: 21
 ---
 
-# 🔝 BAScreenHeader Component
+# BAScreenHeader Component
 
 ## Description
 

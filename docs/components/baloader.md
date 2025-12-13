@@ -2,7 +2,7 @@
 sidebar_position: 15
 ---
 
-# ⏳ BALoader Component
+# BALoader Component
 
 ## Description
 

@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# 📤 BADragDropFile Component
+# BADragDropFile Component
 
 ## Description
 

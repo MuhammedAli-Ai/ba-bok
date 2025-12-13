@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# 🗂️ BACollapse Component
+# BACollapse Component
 
 ## Description
 

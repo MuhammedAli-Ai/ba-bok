@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 🎭 BABackdropLoader Component
+# BABackdropLoader Component
 
 ## Description
 

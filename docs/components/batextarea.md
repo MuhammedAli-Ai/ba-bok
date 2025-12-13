@@ -2,7 +2,7 @@
 sidebar_position: 27
 ---
 
-# 📝 BATextarea Component
+# BATextarea Component
 
 ## Description
 

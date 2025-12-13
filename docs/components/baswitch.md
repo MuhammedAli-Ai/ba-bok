@@ -2,7 +2,7 @@
 sidebar_position: 25
 ---
 
-# 🔌 BASwitch Component
+# BASwitch Component
 
 ## Description
 

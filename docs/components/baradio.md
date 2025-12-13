@@ -2,7 +2,7 @@
 sidebar_position: 20
 ---
 
-# 📻 BARadio Component
+# BARadio Component
 
 ## Description
 

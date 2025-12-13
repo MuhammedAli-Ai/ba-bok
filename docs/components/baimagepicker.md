@@ -2,7 +2,7 @@
 sidebar_position: 14
 ---
 
-# 🖼️ BAImagePicker Component
+# BAImagePicker Component
 
 ## Description
 
