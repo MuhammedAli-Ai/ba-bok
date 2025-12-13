@@ -7,11 +7,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Root Variables - Transparent Blue Theme */
-:root {
-  /* Enforcing Dark Theme Globally - Overwriting Light Defaults */
-  
-  /* Vibrant but Darker Blue Primary Colors */
-  --ifm-color-primary: #2563eb; /* Blue 600 */
+/* Root Variables - Light Mode (Light Blue + White + Transparent Glassy) */
+/* Light Mode Explicit Overrides */
+html[data-theme='light'] {
+  /* Primary Colors - Same as root but reinforcing */
+  --ifm-color-primary: #2563eb;
   --ifm-color-primary-dark: #1d4ed8;
   --ifm-color-primary-darker: #1e40af;
   --ifm-color-primary-darkest: #172554;
@@ -19,27 +19,96 @@
   --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #93c5fd;
 
-  /* Backgrounds: Deep Dark with Blue Tint */
-  --ifm-background-color: #02040a; /* Almost black */
-  --ifm-navbar-background-color: rgba(2, 4, 10, 0.8);
+  /* Backgrounds */
+  --ifm-background-color: #ffffff; /* Pure white for better contrast */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
   
-  /* Font */
+  /* Glassmorphism Variables - Light Mode */
+  --glass-bg: rgba(255, 255, 255, 0.9); /* High opacity for readability */ 
+  --glass-border: rgba(0, 0, 0, 0.1); /* clearly defined border */
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
+
+  /* CONTENT TEXT COLOR - CRITICAL FIX */
+  --ifm-color-content: #000000;
+  --ifm-font-color-base: #000000;
+  --ifm-heading-color: #000000;
+  
+  /* Menu & Sidebar Colors */
+  --ifm-menu-color: #000000;
+  --ifm-menu-color-active: var(--ifm-color-primary-dark);
+  --ifm-menu-color-background-active: rgba(37, 99, 235, 0.1);
+
+  /* TABLES & LISTS */
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.03);
+  --ifm-table-head-color: #000000;
+  --ifm-table-border-color: #e2e8f0;
+}
+
+/* Force dark text on specific elements in light mode */
+html[data-theme='light'] code {
+  color: #1a1a1a !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='light'] .markdown > p,
+html[data-theme='light'] .markdown > ul > li,
+html[data-theme='light'] .markdown > ol > li,
+html[data-theme='light'] .table-of-contents__link {
+  color: #1a1a1a !important;
+}
+
+html[data-theme='light'] table th,
+html[data-theme='light'] table td {
+  color: #000000 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Fix for the badges/capsules seen in screenshots */
+html[data-theme='light'] span[class*="badge"],
+html[data-theme='light'] div[class*="badge"] {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Feature Section - Explicit Black Text for Light Mode as requested */
+html[data-theme='light'] .features-section p,
+html[data-theme='light'] .features-section h3 {
+  color: #000000 !important; /* Force Black text */
+  opacity: 1;
+}
+
+/* Hero Section - Text Visibility and Button Border for Light Mode */
+html[data-theme='light'] .hero__title,
+html[data-theme='light'] .hero__subtitle {
+  color: #000000 !important; /* Dark text for visibility */
+}
+
+html[data-theme='light'] .button--primary {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #000000 !important; /* Visible border */
+}
+
+:root {
+  /* Fallback / Common variables */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --ifm-code-font-size: 95%;
   
-  /* Glassmorphism Variables */
-  --glass-bg: rgba(2, 4, 10, 0.75); 
-  --glass-border: rgba(37, 99, 235, 0.15);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
-  
-  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.15);
+  /* Default to Light Mode values if not caught by data-theme */
+  --ifm-color-content: #000000;
+  --ifm-font-color-base: #000000;
 }
 
 /* Dark mode colors */
 /* Dark mode colors - Deep Blue Transparent Theme */
+/* Dark mode colors - Black / Blue / Transparent Theme */
 [data-theme='dark'] {
-  /* Vibrant and Lighter Blue Primary Colors */
-  --ifm-color-primary: #3b82f6; /* Back to brighter Blue 500 */
+  /* Vibrant Blue Primary Colors */
+  --ifm-color-primary: #3b82f6; /* Blue 500 */
   --ifm-color-primary-dark: #2563eb;
   --ifm-color-primary-darker: #1d4ed8;
   --ifm-color-primary-darkest: #1e40af;
@@ -47,17 +116,30 @@
   --ifm-color-primary-lighter: #93c5fd;
   --ifm-color-primary-lightest: #bfdbfe;
 
-  /* Backgrounds: Lighter Slate Blue (instead of Black) */
-  --ifm-background-color: #0f172a; /* Slate 900 - Lighter than before */
-  --ifm-navbar-background-color: rgba(15, 23, 42, 0.8);
+  /* Backgrounds: Rich Blue instead of Black */
+  --ifm-background-color: #172554; /* Rich Blue */
+  --ifm-navbar-background-color: rgba(23, 37, 84, 0.9);
   
-  /* Glassmorphism Variables */
-  /* Lighter glass tint */
-  --glass-bg: rgba(30, 41, 59, 0.45); 
-  --glass-border: rgba(59, 130, 246, 0.25);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  /* Glassmorphism Variables - Dark Mode */
+  --glass-bg: rgba(30, 58, 138, 0.7); /* Lighter Blue Glass */
+  --glass-border: rgba(96, 165, 250, 0.3); /* Lighter Blue Border */
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   
   --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.15);
+
+  /* Content Text Color - Dark Mode (White) */
+  --ifm-color-content: #f8fafc; /* Slate 50 */
+  
+  /* Standard Docusaurus Base Colors - Dark Mode */
+  --ifm-font-color-base: #f8fafc;
+  --ifm-heading-color: #f8fafc;
+  --ifm-link-color: var(--ifm-color-primary-light);
+  --ifm-link-hover-color: var(--ifm-color-primary-lighter);
+
+  /* Menu & Sidebar Colors - Dark Mode */
+  --ifm-menu-color: #f8fafc;
+  --ifm-menu-color-active: var(--ifm-color-primary-lightest); /* Light Blue for active item in Dark Mode */
+  --ifm-menu-color-background-active: rgba(255, 255, 255, 0.1);
 }
 
 /* Navbar glassmorphism */
@@ -134,14 +216,31 @@
 
 /* Direct targeting for all color mode toggle variations - using transform */
 /* Hiding Color Mode Toggle - Enforcing Single Theme */
-button[class*="toggle"],
+/* Color Mode Toggle - SpecKit Plus Styling */
 button[class*="colorMode"],
 .navbar button[aria-label*="theme"],
-.navbar button[aria-label*="mode"],
-html[data-theme] button[class*="clean"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
+.navbar button[aria-label*="mode"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 50px !important; /* Pill shape or circle depending on content */
+  padding: 5px !important;
+  margin-left: 10px;
+  transform: translateY(-20px) !important; /* Moved up 4x more */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: var(--ifm-color-content) !important;
+}
+
+button[class*="colorMode"]:hover,
+.navbar button[aria-label*="theme"]:hover,
+.navbar button[aria-label*="mode"]:hover {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-20px) scale(1.05) !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2) !important;
 }
 
 /* Fallback with specific Docusaurus classes */
@@ -167,20 +266,13 @@ div[class*="colorModeToggle"],
    HAMBURGER MENU & COLOR MODE TOGGLE
    ======================================== */
 
-/* Step 1: Hide ALL hamburger/toggle buttons on all screens - MAXIMUM SPECIFICITY */
+/* Step 1: Hide Hamburger Menu ONLY - Specific Selectors */
 .mobile-nav-toggle,
 .navbar__toggle,
-.navbar__toggle.clean-btn,
 .navbar-sidebar__toggle,
 button[aria-label="Toggle navigation bar"],
 .navbar button.navbar__toggle,
-.navbar .navbar__toggle,
-html .navbar__toggle,
-body .navbar__toggle,
-[class*="navbar"] button[class*="toggle"],
-.navbar__items button[aria-label*="Toggle"],
-.navbar__items button[aria-label*="menu"],
-.navbar > .navbar__inner button[class*="toggle"] {
+.navbar .navbar__toggle {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -199,18 +291,7 @@ body .navbar__toggle,
 
 /* Step 3: FORCE color mode toggle to be visible - highest priority */
 /* Step 3: Disabled color mode toggle visibility */
-button[title="Switch between dark and light mode (currently dark mode)"],
-button[title="Switch between dark and light mode (currently light mode)"],
-button[title*="Switch between dark and light mode"],
-button[class*="colorModeToggle"],
-div[class*="colorModeToggle"],
-div[class*="colorModeToggle"] > *,
-div[class*="colorModeToggle"] button,
-.color-mode-toggle-wrapper,
-.color-mode-toggle-wrapper button,
-.color-mode-toggle-wrapper > * {
-  display: none !important;
-}
+/* Restored Color Mode Toggle Visibility */
 
 
 
@@ -301,6 +382,27 @@ button[aria-label*="Navigation"] {
   
   .navbar-sidebar__backdrop {
     display: none !important;
+  }
+
+  /* Mobile-specific theme icon adjustments - FIXED POSITIONING APPROACH */
+  button[class*="colorMode"],
+  .navbar button[aria-label*="theme"] {
+    position: absolute !important;
+    top: 25px !important; /* Fixed distance from top */
+    transform: none !important; /* Remove centering transforms */
+    margin-top: 0 !important;
+    right: 70px !important;
+    z-index: 1002 !important; /* Ensure it's on top */
+  }
+}
+
+/* Ensure Mobile Theme Icon is Black in Light Mode */
+@media (max-width: 996px) {
+  html[data-theme='light'] button[class*="colorMode"],
+  html[data-theme='light'] .navbar button[aria-label*="theme"] {
+    color: #000000 !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(0, 0, 0, 0.05) !important;
   }
 }
 
@@ -397,7 +499,7 @@ button[aria-label*="Navigation"] {
 .card p,
 .card h3,
 .card a {
-  color: #ffffff !important;
+  color: var(--ifm-color-content) !important;
   text-decoration: none !important;
 }
 
@@ -480,27 +582,27 @@ html {
   animation: fadeInUp 0.5s ease-out;
 }
 
-/* Sidebar and Table of Contents - White Text for Visibility */
+/* Sidebar and Table of Contents - Adaptive Text Color */
 .menu__link,
 .menu__list-item-collapsible,
 .table-of-contents__link,
 .toc-highlight {
-  color: #ffffff !important;
+  color: var(--ifm-color-content) !important;
   opacity: 0.9;
 }
 
 .menu__link:hover,
 .table-of-contents__link:hover,
 .table-of-contents__link--active {
-  color: var(--ifm-color-primary-lightest) !important;
+  color: var(--ifm-link-hover-color) !important;
   text-decoration: none;
   opacity: 1;
 }
 
-/* Ensure proper specificty for active items */
+/* Ensure proper specificity for active items */
 .menu__link--active {
-  color: var(--ifm-color-primary-lightest) !important;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--ifm-menu-color-active) !important;
+  background-color: var(--ifm-menu-color-background-active) !important;
 }
 
 /* Buttons in Markdown/Global - White Text (Keeping this as it's usually desired) */
@@ -553,15 +655,15 @@ html {
 }
 
 .hero__subtitle {
-  color: #ffffff; /* White text for "Let's Get Started" description */
+  color: var(--ifm-color-content); /* Adaptive text */
   font-weight: 500;
   opacity: 0.9;
 }
 
-/* Feature Section - White Text */
+/* Feature Section - Adaptive Text */
 .features h3, 
 .features p {
-  color: #ffffff !important;
+  color: var(--ifm-color-content) !important;
   opacity: 0.9;
 }
 
