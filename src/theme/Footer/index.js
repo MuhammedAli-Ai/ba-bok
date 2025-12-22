@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useColorMode } from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
 import {
   FacebookOutlined,
@@ -16,6 +17,9 @@ const XIcon = () => (
 );
 
 export default function FooterWrapper(props) {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
   const footerLinks = {
     Connect: [
       { label: 'Facebook', icon: <FacebookOutlined />, href: 'https://facebook.com' },
@@ -25,7 +29,10 @@ export default function FooterWrapper(props) {
   };
 
   return (
-    <footer className="footer-minimalist">
+    <footer className="footer-minimalist" style={{
+      backgroundColor: isDark ? '#0f172a' : '#f8fafc',
+      color: isDark ? 'rgba(209, 213, 219, 0.6)' : '#475569'
+    }}>
       <motion.div
         className="container"
         initial={{ opacity: 0, y: 20 }}
@@ -44,15 +51,15 @@ export default function FooterWrapper(props) {
                 sx={{
                   width: '44px',
                   height: '44px',
-                  borderRadius: '50%',
+                  borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: 0,
                   minWidth: 'auto',
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: 'rgba(209, 213, 219, 0.7)'
+                  backgroundColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+                  border: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.08)',
+                  color: isDark ? 'rgba(209, 213, 219, 0.7)' : '#334155'
                 }}
               >
                 {social.icon}
@@ -62,14 +69,14 @@ export default function FooterWrapper(props) {
         </BABox>
 
         {/* Minimalist Copyright Row */}
-        <BABox sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', padding: '2rem 0', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-          <BAPera style={{ color: 'rgba(209, 213, 219, 0.4)', fontSize: '0.85rem', margin: 0 }}>
-            © {new Date().getFullYear()} BASUITE Digital Archive. All rights reserved. Built with BASuite.
+        <BABox sx={{ borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)', padding: '2rem 0', display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
+          <BAPera style={{ color: isDark ? 'rgba(209, 213, 219, 0.4)' : '#64748b', fontSize: '0.85rem', margin: 0 }}>
+            © {new Date().getFullYear()} BASUITE Digital Archive. All rights reserved.
           </BAPera>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link to="#" style={{ color: 'rgba(209, 213, 219, 0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>Privacy Policy</Link>
-            <Link to="#" style={{ color: 'rgba(209, 213, 219, 0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>Accessibility</Link>
-            <Link to="#" style={{ color: 'rgba(209, 213, 219, 0.4)', fontSize: '0.85rem', textDecoration: 'none' }}>Credits</Link>
+            <Link to="#" style={{ color: isDark ? 'rgba(209, 213, 219, 0.4)' : '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Privacy Policy</Link>
+            <Link to="#" style={{ color: isDark ? 'rgba(209, 213, 219, 0.4)' : '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Accessibility</Link>
+            <Link to="#" style={{ color: isDark ? 'rgba(209, 213, 219, 0.4)' : '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Credits</Link>
           </div>
         </BABox>
       </motion.div>

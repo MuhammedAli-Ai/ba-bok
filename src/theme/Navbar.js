@@ -11,22 +11,21 @@ export default function NavbarWrapper(props) {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const { colorMode, setColorMode } = useColorMode();
-
     const location = useLocation();
     const isHomePage = location.pathname === '/';
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        const previous = scrollY.getPrevious();
-        if (latest > previous && latest > 150) {
-            setHidden(true);
-        } else {
-            setHidden(false);
-        }
+        // const previous = scrollY.getPrevious();
+        // if (latest > previous && latest > 150) {
+        //     setHidden(true);
+        // } else {
+        setHidden(false);
+        // }
     });
 
-    if (!isHomePage) {
-        return <Navbar {...props} />;
-    }
+    // if (!isHomePage) {
+    //     return <Navbar {...props} />;
+    // }
 
     return (
         <motion.nav
@@ -37,7 +36,7 @@ export default function NavbarWrapper(props) {
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
             style={{
-                position: 'fixed',
+                position: isHomePage ? 'fixed' : 'absolute',
                 top: '1.5rem',
                 left: 0,
                 right: 0,
@@ -49,32 +48,41 @@ export default function NavbarWrapper(props) {
             }}
         >
             <div className="navbar-basuite-pill" style={{
-                background: 'rgba(15, 23, 42, 0.8)',
+                background: colorMode === 'dark' ? 'rgba(15, 23, 42, 0.8)' : 'rgba(255, 255, 255, 0.8)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                border: colorMode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
                 borderRadius: '50px',
-                padding: '0.75rem 2rem',
+                padding: '0 2rem',
+                height: '80px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                position: 'relative',
+                boxShadow: colorMode === 'dark' ? '0 10px 30px rgba(0,0,0,0.3)' : '0 10px 30px rgba(0,0,0,0.05)',
             }}>
-                {/* Logo */}
-                <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+                {/* Logo - Hanging Overflow */}
+                <Link to="/" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    position: 'absolute',
+                    left: '20px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 10
+                }}>
                     <img
                         src="/img/logo.png"
                         alt="BASUIT Logo"
-                        style={{ height: '55px', width: 'auto' }}
+                        style={{ height: '180px', width: 'auto', margin: 0, padding: 0 }}
                     />
                 </Link>
 
                 {/* Actions */}
-                <div className="navbar-actions" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                <div className="navbar-actions" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', marginLeft: 'auto' }}>
                     <div onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')} style={{ cursor: 'pointer' }}>
                         {colorMode === 'dark' ?
-                            <SunOutlined style={{ fontSize: '1.25rem', color: 'white' }} /> :
-                            <MoonOutlined style={{ fontSize: '1.25rem', color: 'white' }} />
+                            <SunOutlined style={{ fontSize: '1.25rem', color: '#fcd34d' }} /> :
+                            <MoonOutlined style={{ fontSize: '1.25rem', color: '#1e293b' }} />
                         }
                     </div>
                     <Link

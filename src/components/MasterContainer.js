@@ -34,30 +34,60 @@ const GlobalAppHooks = () => {
 };
 
 export default function MasterContainer({ colorPrimary, children }) {
+    const [colorMode, setColorMode] = React.useState('light');
+
+    React.useEffect(() => {
+        // Initial check
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme) {
+            setColorMode(currentTheme);
+        }
+
+        // Observe changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    const newTheme = document.documentElement.getAttribute('data-theme');
+                    setColorMode(newTheme);
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const isDark = colorMode === 'dark';
 
     appTheme = {
-        algorithm: theme.darkAlgorithm,
+        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         token: {
-            colorPrimary: colorPrimary || '#3b82f6', // Brighter Blue
-            colorBgBase: '#0f172a', // Slate 900 Background (Lighter)
-            colorBgContainer: '#1e293b', // Slate 800 Container (Lighter)
+            colorPrimary: colorPrimary || '#2563eb',
+            colorBgBase: isDark ? '#0f172a' : '#f8fafc',
+            colorBgContainer: isDark ? '#1e293b' : '#ffffff',
+            fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         },
         components: {
             Button: {
-                colorPrimary: colorPrimary || '#3b82f6',
-                borderRadius: 4,
+                colorPrimary: colorPrimary || '#2563eb',
+                borderRadius: 6,
+                controlHeight: 40,
             },
             Input: {
-                borderRadius: 4,
-                colorBgContainer: 'rgba(30, 41, 59, 0.6)', // Slate-800 transparent
+                borderRadius: 6,
+                colorBgContainer: isDark ? 'rgba(30, 41, 59, 0.6)' : '#ffffff',
             },
             Select: {
-                borderRadius: 4,
-                colorBgContainer: 'rgba(30, 41, 59, 0.6)',
+                borderRadius: 6,
+                colorBgContainer: isDark ? 'rgba(30, 41, 59, 0.6)' : '#ffffff',
             },
             DatePicker: {
-                borderRadius: 4,
-                colorBgContainer: 'rgba(30, 41, 59, 0.6)',
+                borderRadius: 6,
+                colorBgContainer: isDark ? 'rgba(30, 41, 59, 0.6)' : '#ffffff',
             },
             Checkbox: {
                 borderRadius: 4,
@@ -66,8 +96,8 @@ export default function MasterContainer({ colorPrimary, children }) {
                 colorBgContainer: 'transparent',
             },
             Modal: {
-                contentBg: '#1e293b', // Slate 800
-                headerBg: '#1e293b',
+                contentBg: isDark ? '#1e293b' : '#ffffff',
+                headerBg: isDark ? '#1e293b' : '#ffffff',
             }
         },
     }

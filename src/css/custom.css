@@ -4,136 +4,87 @@
  */
 
 /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Root Variables - Transparent Blue Theme */
-/* Root Variables - Light Mode (Light Blue + White + Transparent Glassy) */
-/* Light Mode Explicit Overrides */
+/* Root Variables - Modern Professional Palette */
 html[data-theme='light'] {
-  /* Primary Colors - Same as root but reinforcing */
+  /* Primary Colors - Professional Blue Accent */
   --ifm-color-primary: #2563eb;
   --ifm-color-primary-dark: #1d4ed8;
   --ifm-color-primary-darker: #1e40af;
-  --ifm-color-primary-darkest: #172554;
+  --ifm-color-primary-darkest: #1e3a8a;
   --ifm-color-primary-light: #3b82f6;
   --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #93c5fd;
 
-  /* Backgrounds */
-  --ifm-background-color: #ffffff; /* Pure white for better contrast */
-  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
+  /* Backgrounds - Soft Slate White */
+  --ifm-background-color: #f8fafc;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
   
   /* Glassmorphism Variables - Light Mode */
-  --glass-bg: rgba(255, 255, 255, 0.9); /* High opacity for readability */ 
-  --glass-border: rgba(0, 0, 0, 0.1); /* clearly defined border */
-  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   
-  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.05);
 
-  /* CONTENT TEXT COLOR - CRITICAL FIX */
-  --ifm-color-content: #000000;
-  --ifm-font-color-base: #000000;
-  --ifm-heading-color: #000000;
+  /* Content Text Color - Senior Developer Palettes (Slate) */
+  --ifm-color-content: #334155; /* Slate 700 */
+  --ifm-font-color-base: #334155;
+  --ifm-heading-color: #0f172a; /* Slate 900 */
   
   /* Menu & Sidebar Colors */
-  --ifm-menu-color: #000000;
-  --ifm-menu-color-active: var(--ifm-color-primary-dark);
-  --ifm-menu-color-background-active: rgba(37, 99, 235, 0.1);
+  --ifm-menu-color: #475569; /* Slate 600 */
+  --ifm-menu-color-active: var(--ifm-color-primary);
+  --ifm-menu-color-background-active: rgba(37, 99, 235, 0.08);
 
   /* TABLES & LISTS */
-  --ifm-table-stripe-background: rgba(0, 0, 0, 0.03);
-  --ifm-table-head-color: #000000;
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.02);
+  --ifm-table-head-color: #0f172a;
   --ifm-table-border-color: #e2e8f0;
-}
 
-/* Force dark text on specific elements in light mode */
-html[data-theme='light'] code {
-  color: #1a1a1a !important;
-  background-color: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme='light'] .markdown > p,
-html[data-theme='light'] .markdown > ul > li,
-html[data-theme='light'] .markdown > ol > li,
-html[data-theme='light'] .table-of-contents__link {
-  color: #1a1a1a !important;
-}
-
-html[data-theme='light'] table th,
-html[data-theme='light'] table td {
-  color: #000000 !important;
-  border-color: #e2e8f0 !important;
-}
-
-/* Fix for the badges/capsules seen in screenshots */
-html[data-theme='light'] span[class*="badge"],
-html[data-theme='light'] div[class*="badge"] {
-  color: #000000 !important;
-  background: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Feature Section - Explicit Black Text for Light Mode as requested */
-html[data-theme='light'] .features-section p,
-html[data-theme='light'] .features-section h3 {
-  color: #000000 !important; /* Force Black text */
-  opacity: 1;
-}
-
-/* Hero Section - Text Visibility and Button Border for Light Mode */
-html[data-theme='light'] .hero__title,
-html[data-theme='light'] .hero__subtitle {
-  color: #000000 !important; /* Dark text for visibility */
-}
-
-html[data-theme='light'] .button--primary {
-  color: #000000 !important;
-  background: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid #000000 !important; /* Visible border */
-}
-
-/* Light Theme Logo - Scale Method (Huge) - HOMEPAGE ONLY */
-body:has(.homepage-wrapper) html[data-theme='light'] .navbar__logo,
-html[data-theme='light'] body:has(.homepage-wrapper) .navbar__logo {
-  height: 100px !important; 
-  width: auto;
-  transform: scale(4.5);
-  transform-origin: center;
-  z-index: 1000;
-  position: relative;
-  margin: 0 40px;
-}
-
-/* Dark Theme Logo - Scale Method (Huge) - HOMEPAGE ONLY */
-body:has(.homepage-wrapper) html[data-theme='dark'] .navbar__logo,
-html[data-theme='dark'] body:has(.homepage-wrapper) .navbar__logo {
-  height: 100px !important;
-  width: auto;
-  transform: scale(4.5);
-  transform-origin: center;
-  z-index: 1000;
-  position: relative;
-  margin: 0 40px;
-}
-
-/* Default Logo Style (Book/Docs Pages) - RESTORE SIMPLE HEADER */
-.navbar__logo {
-  height: 60px !important; /* Standard size */
-  width: auto;
-  transform: none !important;
-  margin: 0 !important;
-  transition: transform 0.3s ease; /* Smooth transition if navigating */
-}
-
-:root {
-  /* Fallback / Common variables */
-  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --ifm-code-font-size: 95%;
+  /* Custom palette accents */
+  --color-accent-blue: #3b82f6;
+  --color-accent-gray: #64748b;
+  --color-accent-secondary: #f59e0b; /* Amber 500 */
   
-  /* Default to Light Mode values if not caught by data-theme */
-  --ifm-color-content: #000000;
-  --ifm-font-color-base: #000000;
+  /* Landing Page Specifics */
+  --homepage-title-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  --homepage-glass-card-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* Typography Base */
+:root {
+  --ifm-font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-code-font-size: 92%;
+  
+  /* Default content variables */
+  --ifm-line-height-base: 1.6;
+}
+
+/* Light Mode Card/Component Refinements */
+html[data-theme='light'] .card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+html[data-theme='light'] code {
+  color: #c2410c !important; /* Professional theme orange/red for code */
+  background-color: #fffafb !important;
+  border: 1px solid rgba(255, 0, 0, 0.05);
+}
+
+/* Hero Section Refinements for Light Mode */
+html[data-theme='light'] .hero__title {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme='light'] .hero__subtitle {
+  color: #475569 !important;
 }
 
 /* Dark mode colors */
@@ -165,6 +116,7 @@ html[data-theme='dark'] body:has(.homepage-wrapper) .navbar__logo {
   --ifm-color-content-secondary: #94a3b8; /* Slate 400 */
   
   /* Standard Docusaurus Base Colors */
+  --ifm-font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --ifm-font-color-base: #f8fafc;
   --ifm-heading-color: #f8fafc;
   --ifm-link-color: var(--ifm-color-primary);
@@ -172,6 +124,10 @@ html[data-theme='dark'] body:has(.homepage-wrapper) .navbar__logo {
 
   /* Custom Lumina Variables */
   --color-accent-secondary: #fbbf24; /* Amber 400 */
+  
+  /* Landing Page Specifics */
+  --homepage-title-gradient: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+  --homepage-glass-card-bg: rgba(30, 41, 59, 0.7);
 }
 
 /* Floating Pill Navbar - HOMEPAGE ONLY */
@@ -188,6 +144,11 @@ body:has(.homepage-wrapper) .navbar {
   transform: translateX(-50%) !important;
 }
 
+/* Push content down on docs pages to prevent fixed header overlap */
+html[class*="docs-"] #__docusaurus {
+  padding-top: 100px; /* Adjust based on header height + float offset */
+}
+
 /* Reset Navbar for Book/Docs Pages - STANDARD DOCUSAURUS HEADER */
 html[class*="docs-"] .navbar {
   margin: 0 !important;
@@ -195,7 +156,7 @@ html[class*="docs-"] .navbar {
   max-width: none !important;
   border-radius: 0 !important;
   top: 0 !important;
-  position: sticky !important;
+  position: relative !important;
   left: 0 !important;
   transform: none !important;
   border: none !important;
@@ -218,11 +179,16 @@ html[class*="docs-"] .navbar {
   background: transparent !important;
 }
 
+/* Navigation Brand (Logo Container) */
 .navbar__brand {
   background: transparent !important;
-  /* Only overflow visible on homepage for the huge logo */
-  overflow: hidden; 
+  overflow: visible !important;
   z-index: 1001;
+  position: relative; /* Anchor */
+  height: 60px; /* Constrain brand height */
+  width: auto;
+  display: flex;
+  align-items: center;
 }
 
 body:has(.homepage-wrapper) .navbar__brand {
@@ -230,13 +196,19 @@ body:has(.homepage-wrapper) .navbar__brand {
 }
 
 .navbar__logo {
-  height: 60px;
+  position: absolute;
+  top: 0; /* Align to top of header to prevent clipping off-screen */
+  transform: none; /* Remove vertical centering */
+  left: 0;
+  height: 180px; /* Tripled size */
+  width: auto;
   object-fit: contain;
   background: transparent !important;
   padding: 0;
   border: none;
   box-shadow: none;
-  margin-top: 0;
+  margin: 0;
+  margin-left: 20px;
 }
 
 /* Profile Link in Header (Standard Navbar) */
@@ -339,8 +311,15 @@ button[class*="colorMode"]:hover,
 .navbar button[aria-label*="mode"]:hover {
   background: rgba(59, 130, 246, 0.15) !important;
   border-color: rgba(59, 130, 246, 0.3) !important;
-  transform: translateY(-20px) scale(1.05) !important;
+  transform: scale(1.05) !important;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Homepage only: Maintain the -20px offset on hover */
+body:has(.homepage-wrapper) button[class*="colorMode"]:hover,
+body:has(.homepage-wrapper) .navbar button[aria-label*="theme"]:hover,
+body:has(.homepage-wrapper) .navbar button[aria-label*="mode"]:hover {
+  transform: translateY(-20px) scale(1.05) !important;
 }
 
 /* Fallback with specific Docusaurus classes */
@@ -851,8 +830,6 @@ html {
 
 /* Minimalist Footer Styles */
 .footer-minimalist {
-  background-color: #111827 !important; /* Gray 900 */
-  color: rgba(209, 213, 219, 0.6) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
 }

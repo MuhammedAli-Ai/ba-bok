@@ -1,0 +1,36 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.lineHighlightBackground": "#3B4254",
+    "workbench.colorCustomizations": {
+        "editor.background": "#282C34",
+        "activityBar.background": "#21252B",
+        "sideBar.background": "#282C34",
+        "statusBar.background": "#21252B"
+    },
+    "editor.fontFamily": "Fira Code, Menlo, Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "Fira Code, Consolas, monospace",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        80,
+        100
+    ],
+    "editor.colorDecorators": true,
+    "breadcrumbs.enabled": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/dist": true
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "workbench.iconTheme": "material-icon-theme"
+}
